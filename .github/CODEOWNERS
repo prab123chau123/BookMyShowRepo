@@ -1,28 +1,20 @@
 # Global code owners
 * @prab123chau123
-#
-## Backend code owners
-#src/main/java/ @backend-lead @senior-dev
-#pom.xml @backend-lead
-#src/main/resources/ @backend-lead @devops-team
-#
-## Frontend code owners
-#frontend/ @frontend-lead @ui-ux-team
-#frontend/src/components/ @frontend-lead
-#frontend/src/pages/ @frontend-lead
-#
-## Database and configuration
-#src/main/resources/application.yml @devops-team @backend-lead
-#src/main/resources/data.sql @database-admin @backend-lead
-#
-## Documentation
-#README.md @tech-writer @project-manager
-#docs/ @tech-writer
-#
-## CI/CD and DevOps
-#.github/ @devops-team
-#Dockerfile @devops-team
-#docker-compose.yml @devops-team
-#
-## Security sensitive files
-#src/main/java/com/bookmyshow/config/ @security-team @backend-lead
+
+# Backend code owners
+src/main/java/ @prab123chau123
+pom.xml @prab123chau123
+src/main/resources/ @prab123chau123
+
+# Frontend code owners
+frontend/ @prab123chau123
+
+# Database and configuration
+src/main/resources/application.yml @prab123chau123
+src/main/resources/data.sql @prab123chau123
+
+# Documentation
+README.md @prab123chau123
+
+# CI/CD and DevOps
+.github/ @prab123chau123
