@@ -3,6 +3,8 @@ package com.bookmyshow.controller;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -26,11 +28,13 @@ import jakarta.validation.Valid;
 @CrossOrigin(origins = "*")
 public class MovieController {
 
+    Logger log = LoggerFactory.getLogger(MovieController.class);
     @Autowired
     private MovieService movieService;
 
     @GetMapping
     public ResponseEntity<List<Movie>> getAllMovies() {
+        log.info("Logging in Movie controller");
         return ResponseEntity.ok(movieService.getAllMovies());
     }
 
