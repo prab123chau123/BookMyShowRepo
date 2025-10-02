@@ -3,6 +3,8 @@ package com.bookmyshow.controller;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,6 +23,7 @@ import com.bookmyshow.service.BookingService;
 @RequestMapping("/api/bookings")
 @CrossOrigin(origins = "*")
 public class BookingController {
+    Logger log = LoggerFactory.getLogger(BookingController.class);
     
     @Autowired
     private BookingService bookingService;
@@ -36,6 +39,7 @@ public class BookingController {
                 request.getShowId(),
                 request.getSeatIds()
             );
+            log.info("Logging in booking controller");
             return ResponseEntity.ok(booking);
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().build();
