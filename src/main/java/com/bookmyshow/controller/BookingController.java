@@ -25,6 +25,8 @@ import com.bookmyshow.service.BookingService;
 public class BookingController {
 
     Logger log = LoggerFactory.getLogger(BookingController.class);
+
+    
     @Autowired
     private BookingService bookingService;
     
