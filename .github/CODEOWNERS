@@ -1,20 +1,20 @@
 # Global code owners
-* @prab123chau123
+* @prab123chau123 @prem-chaurasia
 
 # Backend code owners
-src/main/java/ @prab123chau123
-pom.xml @prab123chau123
-src/main/resources/ @prab123chau123
+src/main/java/ @prab123chau123 @prem-chaurasia
+pom.xml @prab123chau123 @prem-chaurasia
+src/main/resources/ @prab123chau123 @prem-chaurasia
 
 # Frontend code owners
-frontend/ @prab123chau123
+frontend/ @prab123chau123 @prem-chaurasia
 
 # Database and configuration
-src/main/resources/application.yml @prab123chau123
-src/main/resources/data.sql @prab123chau123
+src/main/resources/application.yml @prab123chau123 @prem-chaurasia
+src/main/resources/data.sql @prab123chau123 @prem-chaurasia
 
 # Documentation
-README.md @prab123chau123
+README.md @prab123chau123 @prem-chaurasia
 
 # CI/CD and DevOps
-.github/ @prab123chau123
+.github/ @prab123chau123 @prem-chaurasia
