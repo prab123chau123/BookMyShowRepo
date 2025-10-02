@@ -23,7 +23,9 @@ import com.bookmyshow.service.BookingService;
 @RequestMapping("/api/bookings")
 @CrossOrigin(origins = "*")
 public class BookingController {
+
     Logger log = LoggerFactory.getLogger(BookingController.class);
+
     
     @Autowired
     private BookingService bookingService;
