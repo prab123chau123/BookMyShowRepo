@@ -15,7 +15,7 @@ jobs:
       uses: actions/github-script@v6
       with:
         script: |
-          const reviewers = ['prab123chau123']; // Your GitHub username
+          const reviewers = ['prab123chau123','prem-chaurasia']; // Your GitHub username
           
           await github.rest.pulls.requestReviewers({
             owner: context.repo.owner,
