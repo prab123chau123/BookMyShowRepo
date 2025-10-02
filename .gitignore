@@ -1,0 +1,12 @@
+# OS
+.DS_Store
+
+# IDEs
+.idea/
+.vscode/
+
+# Maven build
+target/
+
+# Logs
+*.log
