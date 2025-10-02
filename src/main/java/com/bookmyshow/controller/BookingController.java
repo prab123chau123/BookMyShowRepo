@@ -29,6 +29,7 @@ public class BookingController {
     private BookingService bookingService;
     
     @PostMapping
+    //PostMapping to create a new booking
     public ResponseEntity<Booking> createBooking(@RequestBody BookingRequest request) {
         try {
             Booking booking = bookingService.createBooking(
@@ -38,6 +39,7 @@ public class BookingController {
                 request.getShowId(),
                 request.getSeatIds()
             );
+            log.info("Logging in booking controller");
             return ResponseEntity.ok(booking);
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().build();

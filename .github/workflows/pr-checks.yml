@@ -1,0 +1,84 @@
+name: PR Checks
+
+on:
+  pull_request:
+    branches: [ main ]
+    types: [opened, synchronize, reopened]
+
+jobs:
+  auto-assign-reviewers:
+    runs-on: ubuntu-latest
+    if: github.event.action == 'opened'
+    
+    steps:
+    - name: Auto-assign reviewers
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const reviewers = ['prab123chau123','prem-chaurasia']; // Your GitHub username
+          
+          await github.rest.pulls.requestReviewers({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            pull_number: context.issue.number,
+            reviewers: reviewers
+          });
+          
+          await github.rest.issues.createComment({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            issue_number: context.issue.number,
+            body: `👋 Thanks for the PR! I've automatically assigned reviewers: ${reviewers.map(r => `@${r}`).join(', ')}\n\n📋 **Review Checklist:**\n- [ ] Code follows project standards\n- [ ] Tests are included and passing\n- [ ] Documentation is updated\n- [ ] No breaking changes or properly documented`
+          });
+
+  label-pr:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Label PR based on files changed
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const { data: files } = await github.rest.pulls.listFiles({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            pull_number: context.issue.number
+          });
+          
+          const labels = [];
+          
+          const hasBackendChanges = files.some(file => 
+            file.filename.includes('src/main/java') || 
+            file.filename.includes('pom.xml') ||
+            file.filename.includes('application.yml')
+          );
+          
+          const hasFrontendChanges = files.some(file => 
+            file.filename.includes('frontend/') ||
+            file.filename.includes('package.json')
+          );
+          
+          const hasTestChanges = files.some(file => 
+            file.filename.includes('src/test/') ||
+            file.filename.includes('.test.js')
+          );
+          
+          const hasDocChanges = files.some(file => 
+            file.filename.includes('README') ||
+            file.filename.includes('.md')
+          );
+          
+          if (hasBackendChanges) labels.push('backend');
+          if (hasFrontendChanges) labels.push('frontend');
+          if (hasTestChanges) labels.push('tests');
+          if (hasDocChanges) labels.push('documentation');
+          
+          if (labels.length > 0) {
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              labels: labels
+            });
+          }
