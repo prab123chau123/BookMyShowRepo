@@ -1,4 +1,4 @@
-# BookMyShow Clone - Spring Boot Application
+# BookMyShow - Spring Boot Application
 
 A simplified BookMyShow clone built with Spring Boot, Hibernate, and PostgreSQL for interview preparation.
 
